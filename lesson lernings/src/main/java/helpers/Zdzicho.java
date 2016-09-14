@@ -21,4 +21,23 @@ public class Zdzicho {
     public static Zdzicho zonaty(int wzrost) {
         return new Zdzicho(wzrost, true);
     }
+
+    public class Builder {
+        private int wzrost;
+        private boolean zona;
+
+        public Builder wzrost(int wzrost) {
+            this.wzrost = wzrost;
+            return this;
+        }
+
+        public Builder zona(boolean zona) {
+            this.zona = zona;
+            return this;
+        }
+
+        public Zdzicho build() {
+            return new Zdzicho(wzrost, zona);
+        }
+    }
 }
