@@ -14,7 +14,7 @@ public class List {
     }
 
     protected void incremetnItemCount() {
-        itemCount++;
+        ++itemCount;
     }
 
 
@@ -34,7 +34,6 @@ public class List {
     }
 
     /**
-     *
      * @param node
      * @return
      */
@@ -60,6 +59,12 @@ public class List {
          *
          */
         checkListHaveItems(index);
+        if (index == 1) {
+            head = head.getNext();
+            decremnetItemCount();
+            return;
+        }
+
         Node first = get(index - 1);
         Node toDelete = get(index);
         Node second;
@@ -70,13 +75,11 @@ public class List {
             //we want to delete last item so we
             second = null;
         }
-
         first.replaceNext(second);
         decremnetItemCount();
     }
 
     /**
-     * 
      * @param index
      * @return
      * @throws IllegalArgumentException

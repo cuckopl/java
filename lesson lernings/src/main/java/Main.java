@@ -32,6 +32,8 @@ public class Main {
 
         testList.get(4);
         testList.get(5);
+
+        testList.remove(5);
         testList.remove(1);
         testList.remove(4);
 
