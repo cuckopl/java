@@ -10,7 +10,7 @@ public class List {
     private int itemCount;
 
     public List() {
-        itemCount = 1;
+        itemCount = 0;
     }
 
     protected void incremetnItemCount() {
@@ -24,7 +24,7 @@ public class List {
 
 
     protected void checkListHaveItems(int index) {
-        if (index >= itemCount) {
+        if (index > itemCount) {
             throw new IllegalArgumentException("List don't have so many elements.");
         }
     }
