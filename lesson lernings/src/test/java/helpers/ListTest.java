@@ -19,9 +19,8 @@ public class ListTest {
         list.get(0);
     }
 
-
     @Test
-    public void checkGetForZeroOneElement() throws Exception {
+    public void checkGetForOneElement() throws Exception {
         List list = new List();
         list.add(new Node());
         assertThat(list.get(0), notNullValue());
