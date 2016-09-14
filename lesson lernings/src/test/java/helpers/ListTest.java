@@ -3,6 +3,7 @@ package helpers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
@@ -25,11 +26,11 @@ public class ListTest {
 
 
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void checkGet() throws Exception {
         List testList = new List();
 
         List list = new List();
-        assertThat(list.get(0), equalTo(null));
+        list.get(0);
     }
 }
