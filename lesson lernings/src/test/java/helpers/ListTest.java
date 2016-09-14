@@ -1,14 +1,11 @@
 package helpers;
 
-import org.junit.Assert;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsNull.notNullValue;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
-
-import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
 
 
 /**
@@ -16,21 +13,17 @@ import static org.junit.Assert.assertThat;
  */
 @RunWith(BlockJUnit4ClassRunner.class)
 public class ListTest {
-
-
-    @Before
-    public void setUp() throws Exception {
-
-
+    @Test(expected = IllegalArgumentException.class)
+    public void checkGetForZeroElements() throws Exception {
+        List list = new List();
+        list.get(0);
     }
 
 
-
-    @Test(expected = IllegalArgumentException.class)
-    public void checkGet() throws Exception {
-        List testList = new List();
-
+    @Test
+    public void checkGetForZeroOneElement() throws Exception {
         List list = new List();
-        list.get(0);
+        list.add(new Node());
+        assertThat(list.get(0), notNullValue());
     }
 }
