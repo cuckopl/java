@@ -5,24 +5,25 @@ package helpers;
  */
 public class Node {
 
-    private Node prev = null;
-    private int index;
+    private Node next = null;
 
 
     public String data;
 
 
-    public Node getprev() {
-        return prev;
+    public Node getNext() {
+        return next;
     }
 
-    public void setPrev (Node node){
-        if(getprev()==null){
-            prev = node;
-        }else{
-            prev.setPrev(node);
+    public void replaceNext(Node node) {
+        next = node;
+    }
+
+    public void setNext(Node node) {
+        if (getNext() == null) {
+            next = node;
+        } else {
+            next.setNext(node);
         }
     }
-
-
 }
