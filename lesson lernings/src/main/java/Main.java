@@ -30,13 +30,12 @@ public class Main {
         testList.add(node4);
         testList.add(node5);
 
-        testList.get(1);
+        testList.get(4);
         testList.get(5);
 
         testList.remove(5);
-        testList.remove(4);
         testList.remove(1);
-
+        testList.remove(4);
 
 
 
