@@ -10,11 +10,11 @@ public class List {
     private int itemCount;
 
     public List() {
-        itemCount = 1;
+        itemCount = 0;
     }
 
     protected void incremetnItemCount() {
-        itemCount++;
+        ++itemCount;
     }
 
 
@@ -24,7 +24,7 @@ public class List {
 
 
     protected void checkListHaveItems(int index) {
-        if (index >= itemCount) {
+        if (index >=itemCount) {
             throw new IllegalArgumentException("List don't have so many elements.");
         }
     }
@@ -34,7 +34,6 @@ public class List {
     }
 
     /**
-     *
      * @param node
      * @return
      */
@@ -60,6 +59,12 @@ public class List {
          *
          */
         checkListHaveItems(index);
+        if (index == 1) {
+            head = head.getNext();
+            decremnetItemCount();
+            return;
+        }
+
         Node first = get(index - 1);
         Node toDelete = get(index);
         Node second;
@@ -70,13 +75,11 @@ public class List {
             //we want to delete last item so we
             second = null;
         }
-
         first.replaceNext(second);
         decremnetItemCount();
     }
 
     /**
-     * 
      * @param index
      * @return
      * @throws IllegalArgumentException
