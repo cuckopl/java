@@ -13,12 +13,12 @@ public class List {
         itemCount = 0;
     }
 
-    protected void incremetnItemCount() {
+    protected void incrementItemCount() {
         ++itemCount;
     }
 
 
-    protected void decremnetItemCount() {
+    protected void decrementItemCount() {
         --itemCount;
     }
 
@@ -43,7 +43,7 @@ public class List {
         } else {
             head.setNext(node);
         }
-        incremetnItemCount();
+        incrementItemCount();
         return getItemCount();
     }
 
@@ -63,7 +63,7 @@ public class List {
         checkListHaveItems(index);
         if (index == 1) {
             head = head.getNext();
-            decremnetItemCount();
+            decrementItemCount();
             return;
         }
 
@@ -77,7 +77,7 @@ public class List {
             }
             //remove last element
             current.setNext(null);
-            decremnetItemCount();
+            decrementItemCount();
             return;
         }
 
@@ -92,7 +92,7 @@ public class List {
             second = null;
         }
         first.replaceNext(second);
-        decremnetItemCount();
+        decrementItemCount();
     }
 
     /**
