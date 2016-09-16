@@ -70,13 +70,14 @@ public class List {
         // if last element
         Node current = head;
         if (getItemCount() == index) {
-            current = current.getNext();
+
             //Tricky and bumpy !!
             while (current.getNext().getNext() != null) {
                 current = current.getNext();
             }
             //remove last element
-            current.setNext(null);
+
+            current.removeNext();
             decrementItemCount();
             return;
         }
