@@ -19,6 +19,10 @@ public class Node {
         next = node;
     }
 
+    public void removeNext() {
+        next = null;
+    }
+
     public void setNext(Node node) {
         if (getNext() == null) {
             next = node;
