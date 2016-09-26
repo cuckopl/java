@@ -13,18 +13,18 @@ public class List {
         itemCount = 0;
     }
 
-    protected void incremetnItemCount() {
+    protected void incrementItemCount() {
         ++itemCount;
     }
 
 
-    protected void decremnetItemCount() {
+    protected void decrementItemCount() {
         --itemCount;
     }
 
 
     protected void checkListHaveItems(int index) {
-        if (index >=itemCount) {
+        if (index > itemCount || itemCount == 0) {
             throw new IllegalArgumentException("List don't have so many elements.");
         }
     }
@@ -37,19 +37,19 @@ public class List {
      * @param node
      * @return
      */
-    public boolean add(Node node) {
+    public int add(Node node) {
         if (head == null) {
             head = node;
         } else {
             head.setNext(node);
         }
-        incremetnItemCount();
-        return true;
+        incrementItemCount();
+        return getItemCount();
     }
 
     public void remove(int index) {
 
-
+        //this doesn't work good
         /**
          * I wirte that beacuse i want to see what is happening
          *This will work also
@@ -58,10 +58,27 @@ public class List {
          Node second   = toDelete.getNext();
          *
          */
+
+        //if first element get anothere element to first position
         checkListHaveItems(index);
         if (index == 1) {
             head = head.getNext();
-            decremnetItemCount();
+            decrementItemCount();
+            return;
+        }
+
+        // if last element
+        Node current = head;
+        if (getItemCount() == index) {
+
+            //Tricky and bumpy !!
+            while (current.getNext().getNext() != null) {
+                current = current.getNext();
+            }
+            //remove last element
+
+            current.removeNext();
+            decrementItemCount();
             return;
         }
 
@@ -76,7 +93,7 @@ public class List {
             second = null;
         }
         first.replaceNext(second);
-        decremnetItemCount();
+        decrementItemCount();
     }
 
     /**
@@ -87,7 +104,22 @@ public class List {
     public Node get(int index) throws IllegalArgumentException {
         checkListHaveItems(index);
         Node current = head;
-        for (int i = 1; i < index && current.getNext() != null; i++) {
+
+        //if first element
+        if (index == 1) {
+            return head;
+        }
+        //if last element
+        if (getItemCount() == index) {
+            current = current.getNext();
+            while (current.getNext() != null) {
+                current = current.getNext();
+            }
+            return current;
+        }
+
+        //any othere elements that we have in list
+        for (int i = 0; i < index && current.getNext() != null; i++) {
             current = current.getNext();
         }
         return current;
