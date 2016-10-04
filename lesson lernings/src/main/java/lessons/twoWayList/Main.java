@@ -17,6 +17,8 @@ public class Main {
         testList.add(testNode2);
         testList.add(testNode3);
 
+        testList.remove(1);
+        testList.remove(1);
         System.out.print("ok");
 
     }

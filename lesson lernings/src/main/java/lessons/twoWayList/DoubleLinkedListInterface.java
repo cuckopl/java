@@ -7,13 +7,11 @@ public interface DoubleLinkedListInterface {
 
     public void add(DoubleLinkedNodeInterface node);
 
-    public void set(int index, DoubleLinkedNodeInterface node);
+    public void update(int index, DoubleLinkedNodeInterface node);
 
     public void remove(int index);
 
-    public void remove();
-
-    public void size(DoubleLinkedNodeInterface node);
+    public int size();
 
     public DoubleLinkedNodeInterface get(int index);
 

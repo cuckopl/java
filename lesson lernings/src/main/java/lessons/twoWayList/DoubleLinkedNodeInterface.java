@@ -5,12 +5,14 @@ package lessons.twoWayList;
  */
 public interface DoubleLinkedNodeInterface {
 
+    public void addNext(DoubleLinkedNodeInterface node);
 
     public void setNext(DoubleLinkedNodeInterface next);
     public void setPrev(DoubleLinkedNodeInterface next);
 
-    public DoubleLinkedNode getNext();
-    public DoubleLinkedNode getPrev();
+    public DoubleLinkedNodeInterface getNext();
+    public DoubleLinkedNodeInterface getPrev();
+
 
     public void setData(String data);
 
