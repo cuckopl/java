@@ -57,7 +57,7 @@ public class SimpleList {
 
     private void ensureValidIndex(int index) {
         if (size <= index) {
-            throw new IllegalArgumentException(String.format("Index '%s' must be lower than current size '%s'",
+            throw new IllegalArgumentException(String.format("Index '%s' couldn't be lower or equal 0 and bigger than current size '%s'",
                     index, size));
         }
     }
