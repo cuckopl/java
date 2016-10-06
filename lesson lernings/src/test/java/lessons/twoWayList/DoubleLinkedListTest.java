@@ -1,12 +1,13 @@
 package lessons.twoWayList;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNull.notNullValue;
-import static org.junit.Assert.*;
 
 /**
  * Created by pol on 2016-10-04.
@@ -15,45 +16,40 @@ import static org.junit.Assert.*;
 @RunWith(BlockJUnit4ClassRunner.class)
 public class DoubleLinkedListTest {
 
+    /**
+     * C
+     * @param nodeCount
+     * @return
+     */
+    public LinkedListInterface getTestList(int nodeCount){
+        LinkedListInterface testLinkedList = new LinkedList();
+        for (int i=0; i<nodeCount;i++){
+            testLinkedList.add(new LinkedNode("NODE NR "+i));
+        }
 
-    @Test(expected = IllegalArgumentException.class)
+        return testLinkedList;
+    }
+
+
+    @Test
     public void add() throws Exception {
 
-        DoubleLinkedListInterface testList = new DoubleLinkedList();
+        LinkedListInterface testList = getTestList(0);
+        LinkedNodeInterface lastNode = new LinkedNode("LAST");
+        testList.add(lastNode);
 
-        DoubleLinkedNodeInterface testNode1 = new DoubleLinkedNode("Ploow list hard 1");
-        DoubleLinkedNodeInterface testNode2 = new DoubleLinkedNode("Ploow list hard 2");
-        DoubleLinkedNodeInterface testNode3 = new DoubleLinkedNode("Ploow list hard 3");
-
-        testList.add(testNode1);
-        assertThat(testList.get(1), DoubleLinkedNode);
-
-        testList.add(testNode2);
-        testList.add(testNode3);
-
-        testList.remove(1);
-        testList.remove(1);
+        Assert.assertTrue(testList.get(0).getData().equals("LAST"));
 
     }
 
 
     @Test(expected = IllegalArgumentException.class)
     public void fetchElementDoesntExists() throws Exception {
+        LinkedListInterface testList = getTestList(4);
+        LinkedNodeInterface lastNode = new LinkedNode("LAST");
+        testList.add(lastNode);
 
-        DoubleLinkedListInterface testList = new DoubleLinkedList();
-
-        DoubleLinkedNodeInterface testNode1 = new DoubleLinkedNode("Ploow list hard 1");
-        DoubleLinkedNodeInterface testNode2 = new DoubleLinkedNode("Ploow list hard 2");
-        DoubleLinkedNodeInterface testNode3 = new DoubleLinkedNode("Ploow list hard 3");
-
-        testList.add(testNode1);
-        assertThat(testList.get(0), notNullValue());
-
-        testList.add(testNode2);
-        testList.add(testNode3);
-
-        testList.remove(1);
-        testList.remove(1);
+        testList.get(4);
 
     }
 

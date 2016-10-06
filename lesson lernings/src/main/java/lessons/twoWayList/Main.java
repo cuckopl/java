@@ -7,11 +7,11 @@ public class Main {
 
     public static void main (String args[]){
 
-        DoubleLinkedListInterface testList = new DoubleLinkedList();
+        LinkedListInterface testList = new LinkedList();
 
-        DoubleLinkedNodeInterface testNode1 = new DoubleLinkedNode("Ploow list hard 1");
-        DoubleLinkedNodeInterface testNode2 = new DoubleLinkedNode("Ploow list hard 2");
-        DoubleLinkedNodeInterface testNode3 = new DoubleLinkedNode("Ploow list hard 3");
+        LinkedNodeInterface testNode1 = new LinkedNode("Ploow list hard 1");
+        LinkedNodeInterface testNode2 = new LinkedNode("Ploow list hard 2");
+        LinkedNodeInterface testNode3 = new LinkedNode("Ploow list hard 3");
 
         testList.add(testNode1);
         testList.add(testNode2);

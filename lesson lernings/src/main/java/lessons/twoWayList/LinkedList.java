@@ -1,35 +1,33 @@
 package lessons.twoWayList;
 
-import com.sun.xml.internal.bind.v2.TODO;
-
 /**
  * Created by pol on 2016-10-03.
  */
 
-public class DoubleLinkedList extends AbstractDoubleLinkedList {
+public class LinkedList extends AbstractLinkedList {
 
 
-    protected static final int START_COUNT = 1;
-    private DoubleLinkedNodeInterface headNode = null;
-    private DoubleLinkedNodeInterface tailNode = null;
+    protected static final int START_COUNT = 0;
+    private LinkedNodeInterface headNode = null;
+    private LinkedNodeInterface tailNode = null;
 
-    private DoubleLinkedNodeInterface currentNode = null;
+    private LinkedNodeInterface currentNode = null;
 
     private int size = 0;
 
 
     private void ensureIndexIsValid(int index) {
-        if (size > index && index <= 0) {
+        if (size <= index) {
             throw new IllegalArgumentException(String.format("Index '%s' couldn't be lower or equal 0 and bigger than current size '%s'",
                     index, size));
         }
     }
 
-    private void setHeadNode(DoubleLinkedNodeInterface head) {
+    private void setHeadNode(LinkedNodeInterface head) {
         this.headNode = head;
     }
 
-    private void addToEndOfList(DoubleLinkedNodeInterface node) {
+    private void addToEndOfList(LinkedNodeInterface node) {
         if (tailNode == null) {
             tailNode = node;
             tailNode.setPrev(headNode);
@@ -50,7 +48,7 @@ public class DoubleLinkedList extends AbstractDoubleLinkedList {
         }
     }
 
-    private void removeMiddleNode(DoubleLinkedNodeInterface node) {
+    private void removeMiddleNode(LinkedNodeInterface node) {
         node.getPrev().setNext(node.getNext());
         node.getNext().setPrev(node.getPrev());
     }
@@ -59,7 +57,7 @@ public class DoubleLinkedList extends AbstractDoubleLinkedList {
         tailNode.setNext(tailNode.getPrev());
     }
 
-    private DoubleLinkedNodeInterface findNodeByIndex(int index) {
+    private LinkedNodeInterface findNodeByIndex(int index) {
         ensureIndexIsValid(index);
         currentNode = headNode;
         int currentPosition = START_COUNT;
@@ -68,9 +66,11 @@ public class DoubleLinkedList extends AbstractDoubleLinkedList {
         while (!elemntFinded) {
             if (currentPosition == index) {
                 elemntFinded = true;
+            }else{
+                currentNode = currentNode.getNext();
+                currentPosition++;
             }
-            currentNode = currentNode.getNext();
-            currentPosition++;
+
         }
 
 
@@ -85,7 +85,7 @@ public class DoubleLinkedList extends AbstractDoubleLinkedList {
         return ++size;
     }
 
-    public void add(DoubleLinkedNodeInterface node) {
+    public void add(LinkedNodeInterface node) {
         if (headNode == null) {
             setHeadNode(node);
         } else {
@@ -96,7 +96,7 @@ public class DoubleLinkedList extends AbstractDoubleLinkedList {
         incrementSize();
     }
 
-    public void update(int index, DoubleLinkedNodeInterface node) {
+    public void update(int index, LinkedNodeInterface node) {
         currentNode = findNodeByIndex(index);
         currentNode.getPrev().setNext(node);
         if (currentNode.getNext() != null) {
@@ -123,7 +123,7 @@ public class DoubleLinkedList extends AbstractDoubleLinkedList {
         return size;
     }
 
-    public DoubleLinkedNodeInterface get(int index) {
+    public LinkedNodeInterface get(int index) {
         return findNodeByIndex(index);
     }
 
